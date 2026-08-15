@@ -7,8 +7,11 @@ const port = 3000;
 app.use(express.json());
 
 const forecastRouter = require("./api/read/forecast/forecast-router");
+const prodRouter = require("./api/read/prod/prod-router");
 
 app.use("/forecast", forecastRouter);
+app.use("/prod", prodRouter);
+
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
