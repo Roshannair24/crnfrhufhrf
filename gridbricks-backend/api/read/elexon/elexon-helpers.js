@@ -11,8 +11,6 @@ const getElexonForecastData = async ({ startTime, endTime }) => {
 
     const url = `${getForecastDataUrl()}?publishDateTimeFrom=${startTime}&publishDateTimeTo=${endTime}`;
 
-    console.log({ url });
-
     const options = {
       method: "GET",
       headers: {
