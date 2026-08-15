@@ -1,3 +1,5 @@
+const { getElexonForecastData } = require("../elexon/elexon-helpers");
+
 const getForecastDataForTimeRange = (req, res) => {
   try {
     const { startTime, endTime } = req.query;
