@@ -21,35 +21,54 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
 );
-
-const data = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-  datasets: [
-    {
-      label: "Revenue",
-      data: [120, 190, 150, 250, 220, 300],
-      borderColor: "rgb(59, 130, 246)",
-      backgroundColor: "rgba(59, 130, 246, 0.2)",
-      tension: 0.3,
-      fill: true,
-    },
-  ],
-};
 
 const options = {
   responsive: true,
-//    maintainAspectRatio: false,
+  spanGaps: true,
+  //    maintainAspectRatio: false,
   plugins: {
     legend: { position: "top" },
     title: { display: false },
   },
   scales: {
-    y: { beginAtZero: true },
+    x: {
+      title: {
+        display: true,
+        text: "Target Time End (UTC)",
+      },
+    },
+    y: {
+      beginAtZero: true,
+      title: {
+        display: true,
+        text: "Power Generation (MW)",
+      },
+    },
   },
 };
 
-export default function LineChart() {
+const data = {
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+  datasets: [
+    {
+      label: "Actual Power Generation",
+      data: [120, 190, 150, 250, 220, 300],
+      borderColor: "rgb(59, 130, 246)",
+      tension: 0.3,
+      fill: false,
+    },
+    {
+      label: "Forecasted Power Generation",
+      data: [120, 200, 150, 200, 220, 300],
+      borderColor: "rgb(14, 216, 115)",
+      tension: 0.3,
+      fill: false,
+    },
+  ],
+};
+
+export default function LineChart({ data }) {
   return <Line data={data} options={options} />;
 }

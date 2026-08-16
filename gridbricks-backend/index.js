@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
 require("dotenv").config()
+const cors = require("cors");
+const port = 5000;
 
-const port = 3000;
-
+app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 
 const forecastRouter = require("./api/read/forecast/forecast-router");

@@ -1,5 +1,23 @@
 # Dependencies
 node_modules/
+gridbrics-frontend/node_modules/
+gridbricks-backend/node_modules/
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+.nyc_output/
+
+# next.js
+/.next/
+gridbrics-frontend/.next/
+/out/
 
 # Environment variables
 .env
@@ -12,15 +30,12 @@ logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
 
 # Runtime data
 pids/
 *.pid
 *.seed
-
-# Coverage / test output
-coverage/
-.nyc_output/
 
 # Build output
 dist/
@@ -31,9 +46,17 @@ build/
 .idea/
 .DS_Store
 Thumbs.db
+*.pem
 
 # Optional npm cache
 .npm
 
 # Optional eslint cache
 .eslintcache
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
