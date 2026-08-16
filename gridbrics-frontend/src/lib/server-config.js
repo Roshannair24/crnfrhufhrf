@@ -1,6 +1,7 @@
 const getBaseServerUrl = () => {
-    const baseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
-    return baseUrl;
-}
+  const baseUrl =
+    process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000";
+  return baseUrl;
+};
 
-export { getBaseServerUrl }
+export { getBaseServerUrl };

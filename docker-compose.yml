@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: ./gridbricks-backend
+    ports:
+      - "5000:5000"
+    environment:
+      # Origin the backend's CORS should allow. Change if you serve the
+      # frontend from somewhere other than localhost:3000.
+      - FRONTEND_URL=http://localhost:3000
+    restart: unless-stopped
+
+  # frontend:
+  #   build:
+  #     context: ./gridbrics-frontend
+  #     args:
+  #       # This is baked into the client JS bundle at build time (see the
+  #       # frontend Dockerfile). It must be a URL reachable from the
+  #       # BROWSER, not the container network — the browser calls the
+  #       # backend directly, not through the frontend container. Since
+  #       # docker-compose publishes the backend on localhost:5000, that's
+  #       # what works for local use.
+  #       NEXT_PUBLIC_API_BASE_URL: http://localhost:5000
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - backend
+  #   restart: unless-stopped
