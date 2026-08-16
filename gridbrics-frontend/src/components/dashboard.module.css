@@ -1,0 +1,11 @@
+.rangeInput {
+  accent-color: #4f46e5;
+}
+
+.rangeInput::-webkit-slider-thumb {
+  background: #4f46e5;
+}
+
+.rangeInput::-moz-range-thumb {
+  background: #4f46e5;
+}
