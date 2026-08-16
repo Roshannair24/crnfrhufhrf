@@ -1,6 +1,6 @@
-const { getElexonForecastData } = require("../elexon/elexon-helpers");
+const { getElexonProdData } = require("../elexon/elexon-helpers");
 
-const getForecastDataForTimeRange = async (req, res) => {
+const getProdDataForTimeRange = async (req, res) => {
   try {
     const { startTime, endTime } = req.query;
 
@@ -12,18 +12,18 @@ const getForecastDataForTimeRange = async (req, res) => {
       throw new Error("Invalid EndTime");
     }
 
-    const data = await getElexonForecastData({
+    const data = await getElexonProdData({
       startTime,
       endTime,
     });
 
     res.status(200).json({ ok: true, data });
   } catch (error) {
-    console.log("Error at getForecastDataForTimeRange():", error);
+    console.log("Error at getProdDataForTimeRange()", error);
     res.status(400).json({ error: error?.message });
   }
 };
 
 module.exports = {
-  getForecastDataForTimeRange,
+  getProdDataForTimeRange,
 };
