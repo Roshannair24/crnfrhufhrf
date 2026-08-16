@@ -116,10 +116,6 @@ const Dashboard = () => {
       endTime: moment(endTime).utc(true).format(),
     };
 
-    console.log({
-      resetValues,
-    });
-
     const sortedArray = Array.from(dataMap)
       .sort(([keyA], [keyB]) => moment(keyA).valueOf() - moment(keyB).valueOf())
       .map(([key, value]) => ({
@@ -135,9 +131,6 @@ const Dashboard = () => {
           "[]",
         ),
       );
-
-    console.log("sortedArray");
-    console.log(sortedArray);
 
     const dateSet = new Set();
     const labels = [];
@@ -180,8 +173,6 @@ const Dashboard = () => {
   };
 
   const handleFetchForecast = async () => {
-    console.log("Fetching forecast data...");
-
     if (!startTime || !endTime) {
       setError("Please select both start and end times.");
       return;
@@ -199,11 +190,6 @@ const Dashboard = () => {
       PING.getForecastDataApi({ payload: queryParams }),
       PING.getProdDataApi({ payload: queryParams }),
     ]);
-
-    console.log("forcastData");
-    console.log(forcastData);
-    console.log(" prodData");
-    console.log(prodData);
 
     const data = generateLineChartData({
       forcastDataArr: forcastData?.data ?? [],
