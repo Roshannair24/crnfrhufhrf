@@ -27,3 +27,5 @@ if (!process.env.VERCEL) {
     console.log(`Forecast app listening on port ${port}`);
   });
 }
+
+module.exports = app;
