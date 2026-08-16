@@ -1,27 +1,19 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
-/**
- * DateTimePicker
- * A self-contained React + Tailwind CSS date & time picker.
- * No external date library required (uses native Date).
- *
- * Props:
- *  - value:     Date | null            currently selected datetime (controlled)
- *  - onChange:  (date: Date) => void   called whenever the user confirms a change
- *  - minDate:   Date                   optional lower bound (dates before are disabled)
- *  - maxDate:   Date                   optional upper bound (dates after are disabled)
- *  - placeholder: string               shown when value is null
- *  - className: string                 extra classes for the trigger input wrapper
- *
- * Usage:
- *  const [dt, setDt] = useState(null);
- *  <DateTimePicker value={dt} onChange={setDt} />
- */
-
 const WEEKDAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 const MONTHS = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 function startOfDay(d) {
@@ -156,7 +148,9 @@ export default function DateTimePicker({
   }
 
   function goToMonth(offset) {
-    setViewDate(new Date(viewDate.getFullYear(), viewDate.getMonth() + offset, 1));
+    setViewDate(
+      new Date(viewDate.getFullYear(), viewDate.getMonth() + offset, 1),
+    );
   }
 
   function applyNow() {
@@ -177,7 +171,10 @@ export default function DateTimePicker({
   const minuteOptions = Array.from({ length: 60 }, (_, i) => i);
 
   return (
-    <div className={`relative block w-full text-left ${className}`} ref={containerRef}>
+    <div
+      className={`relative block w-full text-left ${className}`}
+      ref={containerRef}
+    >
       <button
         type="button"
         onClick={() => (open ? setOpen(false) : openPicker())}
@@ -194,7 +191,11 @@ export default function DateTimePicker({
           stroke="currentColor"
           strokeWidth={2}
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+          />
         </svg>
       </button>
 
@@ -207,8 +208,19 @@ export default function DateTimePicker({
               onClick={() => goToMonth(-1)}
               className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
             <span className="text-sm font-semibold text-slate-700">
@@ -219,8 +231,19 @@ export default function DateTimePicker({
               onClick={() => goToMonth(1)}
               className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </div>
@@ -228,7 +251,9 @@ export default function DateTimePicker({
           {/* Weekday header */}
           <div className="mb-1 grid grid-cols-7 text-center text-[11px] font-medium text-slate-400">
             {WEEKDAYS.map((w) => (
-              <div key={w} className="py-1">{w}</div>
+              <div key={w} className="py-1">
+                {w}
+              </div>
             ))}
           </div>
 
@@ -247,9 +272,15 @@ export default function DateTimePicker({
                   className={[
                     "mx-auto flex h-8 w-8 items-center justify-center rounded-full transition",
                     outside ? "text-slate-300" : "text-slate-700",
-                    disabled ? "cursor-not-allowed opacity-40" : "hover:bg-indigo-50",
-                    selected ? "bg-indigo-600 text-white hover:bg-indigo-600" : "",
-                    !selected && today ? "ring-1 ring-inset ring-indigo-400" : "",
+                    disabled
+                      ? "cursor-not-allowed opacity-40"
+                      : "hover:bg-indigo-50",
+                    selected
+                      ? "bg-indigo-600 text-white hover:bg-indigo-600"
+                      : "",
+                    !selected && today
+                      ? "ring-1 ring-inset ring-indigo-400"
+                      : "",
                   ].join(" ")}
                 >
                   {date.getDate()}
@@ -261,9 +292,26 @@ export default function DateTimePicker({
           {/* Time controls */}
           <div className="mt-4 flex items-center justify-between gap-2 border-t border-slate-100 pt-4">
             <div className="flex items-center gap-1.5">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <circle cx="12" cy="12" r="9" strokeLinecap="round" strokeLinejoin="round" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 7v5l3 3" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 text-slate-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 7v5l3 3"
+                />
               </svg>
               <select
                 value={hour12}
@@ -271,7 +319,9 @@ export default function DateTimePicker({
                 className="rounded-lg border border-slate-200 bg-white px-2 py-1 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 {Array.from({ length: 12 }, (_, i) => i + 1).map((h) => (
-                  <option key={h} value={h}>{String(h).padStart(2, "0")}</option>
+                  <option key={h} value={h}>
+                    {String(h).padStart(2, "0")}
+                  </option>
                 ))}
               </select>
               <span className="text-slate-400">:</span>
@@ -281,7 +331,9 @@ export default function DateTimePicker({
                 className="rounded-lg border border-slate-200 bg-white px-2 py-1 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 {minuteOptions.map((m) => (
-                  <option key={m} value={m}>{String(m).padStart(2, "0")}</option>
+                  <option key={m} value={m}>
+                    {String(m).padStart(2, "0")}
+                  </option>
                 ))}
               </select>
               <div className="ml-1 flex overflow-hidden rounded-lg border border-slate-200">
@@ -342,4 +394,3 @@ export default function DateTimePicker({
     </div>
   );
 }
-

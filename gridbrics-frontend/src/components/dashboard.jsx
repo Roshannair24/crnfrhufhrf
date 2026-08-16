@@ -12,23 +12,6 @@ const Dashboard = () => {
   const [endTime, setEndTime] = useState(null);
   const [error, setError] = useState(null);
   const [lineChartData, setLineChartData] = useState({
-    // labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-    // datasets: [
-    //   {
-    //     label: "Actual Power Generation",
-    //     data: [120, 190, 150, 250, 220, 300],
-    //     borderColor: "rgb(59, 130, 246)",
-    //     tension: 0.3,
-    //     fill: false,
-    //   },
-    //   {
-    //     label: "Forecasted Power Generation",
-    //     data: [120, 200, 150, 200, 220, 300],
-    //     borderColor: "rgb(14, 216, 115)",
-    //     tension: 0.3,
-    //     fill: false,
-    //   },
-    // ],
     labels: [],
     datasets: [
       {
