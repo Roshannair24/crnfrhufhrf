@@ -74,3 +74,6 @@ npm run dev              # http://localhost:3000
 
 - The **frontend** is deployed to **Vercel**: https://crnfrhufhrf-frontend.vercel.app
 - The **backend** includes a `vercel.json` for deployment as a Vercel serverless function, and a `gridbricks.Dockerfile` for container-based deployment elsewhere. When deploying the backend, set `ELEXON_BASE_URL` and `FRONTEND_URL` in the target platform's environment settings, and point the frontend's `NEXT_PUBLIC_API_BASE_URL` at the deployed backend URL.
+
+## Note:
+Claude was used to build `gridbrics-frontend\src\components\DateTimePicker.jsx` as I did not want to import another library apart from existing tailwind just for a component.
