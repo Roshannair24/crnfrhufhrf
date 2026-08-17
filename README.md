@@ -1,4 +1,4 @@
-# Gridbricks — GB Wind Forecast vs. Actual Generation
+# crnfrhufhrf — GB Wind Forecast vs. Actual Generation
 
  Pick a start and end time, and the dashboard plots **forecasted wind generation** against **actual (metered) wind generation** for that window on a line chart.
 
