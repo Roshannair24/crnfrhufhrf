@@ -120,13 +120,13 @@ const Dashboard = () => {
 
     sortedArray.forEach((item) => {
       const formattedDate = moment.utc(item.startTime).format("YYYY-MM-DD");
-
-      if (!dateSet.has(formattedDate)) {
-        dateSet.add(formattedDate);
-        labels.push(moment.utc(item.startTime).format("YYYY-MM-DD HH:mm"));
-      } else {
-        labels.push(moment.utc(item.startTime).format("HH:mm"));
-      }
+      labels.push(moment.utc(item.startTime).format("YYYY-MM-DD HH:mm"));
+      // if (!dateSet.has(formattedDate)) {
+      //   dateSet.add(formattedDate);
+      //   labels.push(moment.utc(item.startTime).format("YYYY-MM-DD HH:mm"));
+      // } else {
+      //   labels.push(moment.utc(item.startTime).format("HH:mm"));
+      // }
     });
 
     const prodData = sortedArray.map((item) => item.prodGeneration);
